@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+	int n,i=0, sum = 0,max,min;
+	while (cin >> n)
+	{
+		if (n == 0)
+			break;
+		sum += n;
+		i++;
+		if (i==1)
+		{
+			min = max = n;
+		}
+		else
+		{
+			if (min > n)
+				min = n;
+			if (max < n)
+				max = n;
+		}
+		cout << min << " " 
+			<< max << " " 
+			<< sum / i << " " << endl;
+	}
+	return 0;
+}
+
+输出结果：
+3
+3 3 3
+6
+3 6 4
+12
+3 12 7
+9
+3 12 7
+1
+1 12 6
+234
+1 234 44

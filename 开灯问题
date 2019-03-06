@@ -1,0 +1,54 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+#define max 1010
+
+int light[max];
+int M=0;
+
+void on(int n){
+	n = 0;
+}
+
+void off(int n){
+	n = 1;
+}
+
+void setlight(int a[1010]){
+	for (int i = 0; i < max; i++)
+		a[i] = 0;
+}
+
+void print(int a[1000],int n){
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i]==0)
+			cout << i+1 << "-" << a[i] << "\t";
+	}
+}
+
+
+
+int main(){
+	int n, k;
+	setlight(light);
+	cin >> n >> k;
+	for (int i = 1; i <= k; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (j%i == 0)
+			{
+				if (light[j] == 0)
+					light[j] = 1;
+				else if (light[j] == 1)
+					light[j] = 0;
+			}
+			
+		}
+	}
+	print(light, n);
+	cout << endl;
+
+	return 0;
+}

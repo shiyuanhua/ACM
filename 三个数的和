@@ -5,35 +5,29 @@
 using namespace std;
 
 class Solution {
-private:
-	vector<vector<int> > result;
 public:
-	void sortnum(vector<int>& nums){
-		sort(nums.begin(),nums.end());
-	}
 	vector<vector<int>> threeSum(vector<int>& nums) {
-		sortnum(nums);
-		vector<int> r ;
-		for (int i = 0; i < nums.size()-1; i++)
+		sort(nums.begin(), nums.end());
+		vector<vector<int> > result;
+		vector<int> r;
+		if (nums.size() == 0) return result;
+		for (int i = 0; i < nums.size(); i++)
 		{
-			if (i != 0 && nums[i] == nums[i - 1])
+			if (i > 0 && nums[i] == nums[i - 1])
 				continue;
 			int j = i + 1, k = nums.size() - 1;
-			while(j < k){
+			while (j < k){
 				int sum = nums[i] + nums[j] + nums[k];
 				if (sum == 0)
 				{
-					r.push_back(nums[i]);
-					r.push_back(nums[j]);
-					r.push_back(nums[k]);
-					result.push_back(r);
-					r.clear();
+					result.push_back({ nums[i], nums[j], nums[k] });
 					j++;
 					k--;
-					while (j < k&&nums[j] == nums[j + 1])
+					while (j < k&&nums[j] == nums[j - 1])
 						j++;
-					while (j < k&&nums[k] == nums[k - 1])
+					while (j < k&&nums[k] == nums[k + 1])
 						k--;
+
 				}
 				else if (sum < 0)
 				{
@@ -49,6 +43,8 @@ public:
 		return result;
 	}
 };
+
+
 
 int main(){
 	Solution s;
